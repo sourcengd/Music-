@@ -14,6 +14,8 @@ from youtube_search import YoutubeSearch
 
 from ZeMusic import app
 from ZeMusic.plugins.play.filters import command
+from ZeMusic.utils.decorators import AdminActual
+from ZeMusic.utils.database import is_search_enabled, enable_search, disable_search
 
 def remove_if_exists(path):
     if os.path.exists(path):
@@ -21,8 +23,12 @@ def remove_if_exists(path):
         
 lnk = config.CHANNEL_LINK
 Nem = config.BOT_NAME + " ابحث"
-@app.on_message(command(["song", "/song", "بحث", Nem]))
+@app.on_message(command(["song", "/song", "بحث", Nem]) & filters.group)
 async def song_downloader(client, message: Message):
+    chat_id = message.chat.id 
+    if not await is_search_enabled(chat_id):
+        return await message.reply_text("⟡ عذراً عزيزي البحث معطل")
+        
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث ..</b>")
     
@@ -92,3 +98,26 @@ async def song_downloader(client, message: Message):
         remove_if_exists(thumb_name)
     except Exception as e:
         print(e)
+
+
+
+@app.on_message(command(["تعطيل البحث"]) & filters.group)
+@AdminActual
+async def disable_search_command(client, message: Message, _):
+    chat_id = message.chat.id
+    if not await is_search_enabled(chat_id):
+        await message.reply_text("<b>البحث معطل من قبل.</b>")
+        return
+    await disable_search(chat_id)
+    await message.reply_text("<b>تم تعطيل البحث بنجاح.</b>")
+
+
+@app.on_message(command(["تفعيل البحث"]) & filters.group)
+@AdminActual
+async def enable_search_command(client, message: Message, _):
+    chat_id = message.chat.id
+    if await is_search_enabled(chat_id):
+        await message.reply_text("<b>البحث مفعل من قبل.</b>")
+        return
+    await enable_search(chat_id)
+    await message.reply_text("<b>تم تفعيل البحث بنجاح.</b>")
