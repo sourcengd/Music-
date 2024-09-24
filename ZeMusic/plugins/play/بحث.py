@@ -25,7 +25,7 @@ Nem = config.BOT_NAME + " يوت"
 @app.on_message(command(["song", "/song", "بحث", Nem]) & filters.private)
 async def song_downloader1(client, message: Message):
     if not await is_search_enabled1():
-        return await message.reply_text("⟡ عذراً عزيزي البحث معطل من قبل االمطور)
+        return await message.reply_text("⟡ عذراً عزيزي البحث معطل من قبل االمطور")
         
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث ..</b>")
