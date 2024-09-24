@@ -101,7 +101,7 @@ async def song_downloader(client, message: Message):
 
 
 
-@app.on_message(command(["تعطيل اليوتيوب "]) & filters.group)
+@app.on_message(command(["تعطيل اليوتيوب"]) & filters.group)
 @AdminActual
 async def disable_search_command(client, message: Message, _):
     chat_id = message.chat.id
@@ -112,7 +112,7 @@ async def disable_search_command(client, message: Message, _):
     await message.reply_text("<b>تم تعطيل اليوتيوب بنجاح.</b>")
 
 
-@app.on_message(command(["تفعيل اليوتيوب "]) & filters.group)
+@app.on_message(command(["تفعيل اليوتيوب"]) & filters.group)
 @AdminActual
 async def enable_search_command(client, message: Message, _):
     chat_id = message.chat.id
