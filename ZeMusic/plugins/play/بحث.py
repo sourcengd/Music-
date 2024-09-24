@@ -25,7 +25,7 @@ Nem = config.BOT_NAME + " ابحث"
 @app.on_message(command(["song", "/song", "بحث", Nem]) & filters.private)
 async def song_downloader1(client, message: Message):
     if not await is_search_enabled1():
-        return await message.reply_text("⟡ عذراً عزيزي البحث معطل من قبل الادمن")
+        return await message.reply_text("⟡ عذراً عزيزي البحث معطل من قبل المشرف")
         
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث ..</b>")
@@ -99,19 +99,19 @@ async def song_downloader1(client, message: Message):
 
 
 
-@app.on_message(command(["تعطيل بحث الخاص"]) & filters.user(OWNER_ID))
+@app.on_message(command(["تعطيل اليوتيوب خاص"]) & filters.user(OWNER_ID))
 async def disable_search_command1(client, message: Message):
     if not await is_search_enabled1():
-        await message.reply_text("<b>البحث معطل من قبل.</b>")
+        await message.reply_text("<b>اليوتيوب معطل من قبل.</b>")
         return
     await disable_search1()
-    await message.reply_text("<b>تم تعطيل البحث بنجاح.</b>")
+    await message.reply_text("<b>تم تعطيل اليوتيوب بنجاح.</b>")
 
-@app.on_message(command(["تفعيل بحث الخاص"]) & filters.user(OWNER_ID))
+@app.on_message(command(["تفعيل اليوتيوب خاص"]) & filters.user(OWNER_ID))
 async def enable_search_command1(client, message: Message):
     if await is_search_enabled1():
-        await message.reply_text("<b>البحث مفعل من قبل.</b>")
+        await message.reply_text("<b>اليوتيوب مفعل من قبل.</b>")
         return
     await enable_search1()
-    await message.reply_text("<b>تم تفعيل البحث بنجاح.</b>")
+    await message.reply_text("<b>تم تفعيل اليوتيوب بنجاح.</b>")
   
