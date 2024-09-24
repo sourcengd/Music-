@@ -99,7 +99,7 @@ async def song_downloader1(client, message: Message):
 
 
 
-@app.on_message(command(["بحث خاص تعطيل"]) & filters.user(OWNER_ID))
+@app.on_message(command(["تعطيل بحث الخاص"]) & filters.user(OWNER_ID))
 async def disable_search_command1(client, message: Message):
     if not await is_search_enabled1():
         await message.reply_text("<b>البحث معطل من قبل.</b>")
@@ -107,7 +107,7 @@ async def disable_search_command1(client, message: Message):
     await disable_search1()
     await message.reply_text("<b>تم تعطيل البحث بنجاح.</b>")
 
-@app.on_message(command(["بحث خاص تفعيل"]) & filters.user(OWNER_ID))
+@app.on_message(command(["تفعيل بحث الخاص"]) & filters.user(OWNER_ID))
 async def enable_search_command1(client, message: Message):
     if await is_search_enabled1():
         await message.reply_text("<b>البحث مفعل من قبل.</b>")
