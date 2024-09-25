@@ -154,7 +154,7 @@ def AdminActual(mystic):
                 ).privileges
             except:
                 return
-            if not member.can_manage_video_chats:
+            if member is None or not member.can_manage_video_chats:
                 return await message.reply(_["general_4"])
         return await mystic(client, message, _)
 
