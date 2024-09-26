@@ -27,7 +27,7 @@ Nem = config.BOT_NAME + " ابحث"
 async def song_downloader(client, message: Message):
     chat_id = message.chat.id 
     if not await is_search_enabled(chat_id):
-        return await message.reply_text("⟡عذراً عزيزي اليوتيوب معطل لتفعيل اليوتيوب اكتب تفعيل اليوتيوب ")
+        return await message.reply_text("<b>⟡عذراً عزيزي اليوتيوب معطل لتفعيل اليوتيوب اكتب تفعيل اليوتيوب</b>")
         
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث ..</b>")
@@ -106,10 +106,10 @@ async def song_downloader(client, message: Message):
 async def disable_search_command(client, message: Message, _):
     chat_id = message.chat.id
     if not await is_search_enabled(chat_id):
-        await message.reply_text("<b>اليوتيوب معطل من قبل.</b>")
+        await message.reply_text("<b>⟡اليوتيوب معطل من قبل يالطيب</b>")
         return
     await disable_search(chat_id)
-    await message.reply_text("<b>تم تعطيل اليوتيوب بنجاح.</b>")
+    await message.reply_text("<b>⟡تم تعطيل اليوتيوب بنجاح</b>")
 
 
 @app.on_message(command(["تفعيل اليوتيوب"]) & filters.group)
@@ -117,7 +117,7 @@ async def disable_search_command(client, message: Message, _):
 async def enable_search_command(client, message: Message, _):
     chat_id = message.chat.id
     if await is_search_enabled(chat_id):
-        await message.reply_text("<b>اليوتيوب مفعل من قبل.</b>")
+        await message.reply_text("<b>⟡اليوتيوب مفعل من قبل يالطيب</b>")
         return
     await enable_search(chat_id)
-    await message.reply_text("<b>تم تفعيل اليوتيوب بنجاح.</b>")
+    await message.reply_text("<b>⟡تم تفعيل اليوتيوب بنجاح</b>")
