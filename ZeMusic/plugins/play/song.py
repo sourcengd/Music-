@@ -27,7 +27,8 @@ Nem = config.BOT_NAME + " يوت"
 async def song_downloader(client, message: Message):
     chat_id = message.chat.id 
     if not await is_search_enabled(chat_id):
-        return await message.reply_text("⟡ عذراً عزيزي اليوتيوب معطل")
+        return await message.reply_text("⟡ عذراً عزيزي اليوتيوب معطل 
+لتفعيل اليوتيوب اكتب> تفعيل اليوتيوب ")
         
     query = " ".join(message.command[1:])
     m = await message.reply_text("<b>⇜ جـارِ البحث ..</b>")
