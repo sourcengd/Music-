@@ -30,6 +30,7 @@ Nem = config.BOT_NAME + " شغل"
         [
             "play",
             "تشغيل",
+            "شغل",
             "بث",
             Nem,
             "play",
@@ -435,7 +436,6 @@ async def play_commnd(
                 return await play_logs(message, streamtype=f"URL Searched Inline")
 
 
-
 @app.on_callback_query(filters.regex("MusicStream") & ~BANNED_USERS)
 @languageCB
 async def play_music(client, CallbackQuery, _):
@@ -505,7 +505,6 @@ async def play_music(client, CallbackQuery, _):
     return await mystic.delete()
 
 
-
 @app.on_callback_query(filters.regex("modymousAdmin") & ~BANNED_USERS)
 async def modymous_check(client, CallbackQuery):
     try:
@@ -515,7 +514,6 @@ async def modymous_check(client, CallbackQuery):
         )
     except:
         pass
-
 
 
 @app.on_callback_query(filters.regex("modyPlaylists") & ~BANNED_USERS)
@@ -603,7 +601,6 @@ async def play_playlists_command(client, CallbackQuery, _):
         err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
         return await mystic.edit_text(err)
     return await mystic.delete()
-
 
 
 @app.on_callback_query(filters.regex("slider") & ~BANNED_USERS)
