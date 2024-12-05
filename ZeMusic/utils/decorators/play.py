@@ -60,7 +60,11 @@ def PlayWrapper(command):
                 if "stream" in message.command:
                     return await message.reply_text(_["str_1"])
                 buttons = botplaylist_markup(_)
-                return 
+                return await message.reply_photo(
+                    photo=PLAYLIST_IMG_URL,
+                    caption=_["play_18"],
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                )
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
             if chat_id is None:
@@ -83,7 +87,7 @@ def PlayWrapper(command):
                 else:
                     if message.from_user.id not in admins:
                         return await message.reply_text(_["play_4"])
-        if message.command[0][0] == "v":
+        if message.command[0][0] == "v" or message.command[0][0] == "ب":
             video = True
         else:
             if "-v" in message.text:
